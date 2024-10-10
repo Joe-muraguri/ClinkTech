@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes flash-bright {
+    0%, 100% {
+      background-color: #1C1EC9; 
+      color: #fff; 
+    }
+    50% {
+      background-color: #0476C7; 
+      color: #fff; 
+    }
+  }
+  
+  .animate-flash-bright {
+    animation: flash-bright 0.8s infinite alternate;
+  }
+
+#loginModal:target,
+#registerModal:target {
+  display: flex;
+}
