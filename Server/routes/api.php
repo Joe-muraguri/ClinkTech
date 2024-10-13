@@ -125,16 +125,15 @@ Route::get('allapproved', [ReviewController::class, 'getApprovedReviews']);
 // Route::post('/payments/stkcallback', [MpesaController::class, 'stkCallback']);
 
 
-Route::controller(MpesaController::class)
-->prefix('payments')
-->as('payments')
-->group(function(){
-    Route::get('token', 'token')->name('token');
-    Route::post('/initiatepush', 'initiateStkPush');
-    Route::post('stkcallback', 'stkCallback'); 
-    Route::get('/stkquery', 'stkQuery')->name('stkquery');
-});
-
+// Route::controller(MpesaController::class)
+// ->prefix('payments')
+// ->as('payments')
+// ->group(function(){
+//     Route::get('token', 'token')->name('token');
+//     Route::post('/initiatepush', 'initiateStkPush');
+//     Route::post('stkcallback', 'stkCallback'); 
+//     Route::get('/stkquery', 'stkQuery')->name('stkquery');
+// });
 
 
 Route::get('invoice/{id}', [OrderController::class, 'viewInvoice']);
