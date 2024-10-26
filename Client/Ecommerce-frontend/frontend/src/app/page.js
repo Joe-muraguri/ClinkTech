@@ -20,13 +20,28 @@ export default function Home() {
         const response = await axios.get('http://127.0.0.1:8000/api/products');
         setProduct(response.data);
 
-        console.log('these products', response.data);
       } catch (error) {
         console.log('Error fetching products', error);
       }
     }
     fetchProducts();
-  }, [])
+  }, []);
+
+
+
+
+
+  const handleAddToCart = async (productId) => {
+    axios.post(`http://127.0.0.1:8000/api/addcart/${productId}`,{
+      productId:productId
+    })
+    .then(function (response){
+      console.log(response);
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  }
 
   return (
     <div className="container mx-auto p-4">
@@ -134,7 +149,7 @@ export default function Home() {
 
                       <div className="flex justify-between items-center mt-4">
                         <span className=" px-2 py-1 border border-blue-700 text-sm font-bold text-blue-700 rounded-full">Ksh {item.price}</span>
-                        <button className="px-3 py-1 bg-orange-500 text-white text-sm font-small rounded hover:bg-orange-600">
+                        <button onClick={()=>handleAddToCart(item.id)} className="px-3 py-1 bg-orange-500 text-white text-sm font-small rounded hover:bg-orange-600">
                           Add to Cart
                         </button>
                       </div>

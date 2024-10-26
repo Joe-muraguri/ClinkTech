@@ -103,7 +103,9 @@ Route::group(['middleware' => ['api', 'admin']], function() {
 Route::get('/products', [ProductController::class, 'allProducts']);
 Route::get('/products/{id}', [ProductController::class, 'productSingle']);
 Route::post('/addcart/{id}', [CartController::class, 'addToCart']);
-Route::post('/getcart', [CartController::class, 'getCart']);
+Route::get('/getcart', [CartController::class, 'getCart']);
+//check if product exist in wishlist table
+Route::get('/existing/{id}', [CartController::class, 'existingProductInCart']);
 
 //regions
 Route::get('/getregion', [RegionController::class, 'getRegion']);

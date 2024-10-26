@@ -30,11 +30,13 @@ class CartController extends Controller
                 ]);
             }
 
+            $product = Product::find($product_id);
+
             WishList::create([
-                'product_id' => $dataItem->product_id,
-                'name' => $dataItem->name,
+                'product_id' => $product->product_id,
+                'name' => $product->name,
                 'user_id' => auth()->user()->id,
-                'price' => $dataItem->price,
+                'price' => $product->price,
                 'quantity' => 1
             ]);
         }
@@ -191,6 +193,8 @@ class CartController extends Controller
             ]);
         }
     }
+
+
 }
 
 
